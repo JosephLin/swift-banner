@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="2vC-NK-Ens">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="PnQ-Yv-FSH">
+            <objects>
+                <viewController id="2vC-NK-Ens" customClass="ViewController" customModule="SwiftyBanner" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="dzk-NR-Aq6"/>
+                        <viewControllerLayoutGuide type="bottom" id="GYU-4t-X68"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Q3X-EY-w22">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="9jx-ub-3wy">
+                                <rect key="frame" x="20" y="256" width="560" height="88"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="42R-2f-zlj">
+                                        <rect key="frame" x="0.0" y="0.0" width="560" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <state key="normal" title="Animated"/>
+                                        <connections>
+                                            <action selector="firstButtonTapped:" destination="2vC-NK-Ens" eventType="touchUpInside" id="LN8-m2-4sD"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aPg-jw-qwI">
+                                        <rect key="frame" x="0.0" y="54" width="560" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <state key="normal" title="Not Animated"/>
+                                        <connections>
+                                            <action selector="secondButtonTapped:" destination="2vC-NK-Ens" eventType="touchUpInside" id="xu3-6d-fum"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="9jx-ub-3wy" firstAttribute="centerY" secondItem="Q3X-EY-w22" secondAttribute="centerY" id="KfT-Lc-hdV"/>
+                            <constraint firstItem="9jx-ub-3wy" firstAttribute="leading" secondItem="Q3X-EY-w22" secondAttribute="leadingMargin" id="Oau-Hg-ShZ"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="9jx-ub-3wy" secondAttribute="trailing" id="Y0g-yT-8j8"/>
+                            <constraint firstItem="9jx-ub-3wy" firstAttribute="top" relation="greaterThanOrEqual" secondItem="dzk-NR-Aq6" secondAttribute="bottom" id="YLv-1i-G83"/>
+                            <constraint firstItem="GYU-4t-X68" firstAttribute="top" relation="greaterThanOrEqual" secondItem="9jx-ub-3wy" secondAttribute="bottom" id="adg-Pi-qwn"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="YLv-1i-G83"/>
+                                <exclude reference="adg-Pi-qwn"/>
+                            </mask>
+                        </variation>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1e9-tA-ZFm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="727" y="806"/>
+        </scene>
+    </scenes>
+</document>
