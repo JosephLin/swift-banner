@@ -34,14 +34,6 @@
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="252" verticalHuggingPriority="251" image="ic_warning" translatesAutoresizingMaskIntoConstraints="NO" id="s2q-AD-NWs">
                             <rect key="frame" x="10" y="8" width="32" height="32"/>
-                            <constraints>
-                                <constraint firstAttribute="width" relation="greaterThanOrEqual" id="c6r-pO-H6E"/>
-                            </constraints>
-                            <variation key="default">
-                                <mask key="constraints">
-                                    <exclude reference="c6r-pO-H6E"/>
-                                </mask>
-                            </variation>
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zfF-2Z-9DZ">
                             <rect key="frame" x="50" y="13" width="220" height="21"/>
@@ -61,8 +53,10 @@
                     <gestureRecognizers/>
                     <constraints>
                         <constraint firstAttribute="height" constant="48" id="4gx-2c-QRt"/>
+                        <constraint firstAttribute="centerY" secondItem="oN1-3n-yUn" secondAttribute="centerY" id="A3z-6q-RLx"/>
                         <constraint firstItem="s2q-AD-NWs" firstAttribute="leading" secondItem="p10-qg-uGa" secondAttribute="leading" constant="10" id="C3c-sB-fpz"/>
                         <constraint firstAttribute="trailing" secondItem="zfF-2Z-9DZ" secondAttribute="trailing" priority="750" constant="10" id="CKx-eB-IX1"/>
+                        <constraint firstItem="s2q-AD-NWs" firstAttribute="centerY" secondItem="p10-qg-uGa" secondAttribute="centerY" id="Fpm-FE-EIL"/>
                         <constraint firstAttribute="bottom" secondItem="s2q-AD-NWs" secondAttribute="bottom" constant="8" id="GVW-up-VWM"/>
                         <constraint firstItem="s2q-AD-NWs" firstAttribute="top" secondItem="p10-qg-uGa" secondAttribute="top" constant="8" id="Lub-Nq-iBL"/>
                         <constraint firstItem="zfF-2Z-9DZ" firstAttribute="leading" secondItem="s2q-AD-NWs" secondAttribute="trailing" constant="8" id="cL4-tb-d9R"/>
@@ -76,6 +70,8 @@
                     </constraints>
                     <variation key="default">
                         <mask key="constraints">
+                            <exclude reference="GVW-up-VWM"/>
+                            <exclude reference="Lub-Nq-iBL"/>
                             <exclude reference="jVX-lU-wUe"/>
                         </mask>
                     </variation>

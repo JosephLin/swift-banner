@@ -12,8 +12,9 @@
 		7C35F67C1D5927370051E5C9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7C35F67A1D5927370051E5C9 /* Main.storyboard */; };
 		7C35F67E1D5927370051E5C9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7C35F67D1D5927370051E5C9 /* Assets.xcassets */; };
 		7C35F6811D5927370051E5C9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7C35F67F1D5927370051E5C9 /* LaunchScreen.storyboard */; };
-		7C35F68A1D5927430051E5C9 /* Banner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C35F6881D5927430051E5C9 /* Banner.swift */; };
 		7C35F68B1D5927430051E5C9 /* Banner.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C35F6891D5927430051E5C9 /* Banner.xib */; };
+		7C96EC1A1D5B6C1D009D89C2 /* BannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C96EC191D5B6C1D009D89C2 /* BannerView.swift */; };
+		7C96EC1B1D5BAFC5009D89C2 /* Banner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C35F6881D5927430051E5C9 /* Banner.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		7C35F6821D5927370051E5C9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7C35F6881D5927430051E5C9 /* Banner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Banner.swift; sourceTree = "<group>"; };
 		7C35F6891D5927430051E5C9 /* Banner.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Banner.xib; sourceTree = "<group>"; };
+		7C96EC191D5B6C1D009D89C2 /* BannerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BannerView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +63,7 @@
 				7C35F6761D5927370051E5C9 /* AppDelegate.swift */,
 				7C35F6781D5927370051E5C9 /* ViewController.swift */,
 				7C35F6881D5927430051E5C9 /* Banner.swift */,
+				7C96EC191D5B6C1D009D89C2 /* BannerView.swift */,
 				7C35F67F1D5927370051E5C9 /* LaunchScreen.storyboard */,
 				7C35F67A1D5927370051E5C9 /* Main.storyboard */,
 				7C35F6891D5927430051E5C9 /* Banner.xib */,
@@ -142,9 +145,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7C96EC1A1D5B6C1D009D89C2 /* BannerView.swift in Sources */,
+				7C96EC1B1D5BAFC5009D89C2 /* Banner.swift in Sources */,
 				7C35F6791D5927370051E5C9 /* ViewController.swift in Sources */,
 				7C35F6771D5927370051E5C9 /* AppDelegate.swift in Sources */,
-				7C35F68A1D5927430051E5C9 /* Banner.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
