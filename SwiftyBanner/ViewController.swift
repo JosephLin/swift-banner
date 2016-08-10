@@ -94,7 +94,27 @@ class ViewController: UIViewController {
                     button.setTitle("Done", forState: .Normal)
                 },
                 action: { banner in
-                    banner.dismissBanner(animated: true, completion: nil)
+                    banner.configure(
+                        icon: { (imageView) in
+                            imageView.image = UIImage(named: "ic_warning")
+                            imageView.tintColor = UIColor.redColor()
+                        },
+                        title: { (label) in
+                            label.text = "title"
+                            label.textColor = UIColor.redColor()
+                        },
+                        description: nil,
+                        button: (
+                            button: { (button) in
+                                button.setImage(nil, forState: .Normal)
+                                button.setTitle("Done", forState: .Normal)
+                                button.setTitleColor(UIColor.redColor(), forState: .Normal)
+                            },
+                            action: { banner in
+                                banner.dismissBanner(animated: true, completion: nil)
+                            }
+                        )
+                    )
                 }
             )
         )

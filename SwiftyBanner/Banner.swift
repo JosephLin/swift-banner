@@ -37,8 +37,7 @@ public class WIBannerController : UIViewController {
     @IBOutlet private weak var detailView: UIView?
     @IBOutlet private weak var detailLabel: UILabel?
     @IBOutlet private weak var detailButton: UIButton?
-    
-    @IBOutlet weak var detailLabelButtonConstraint: NSLayoutConstraint?
+    @IBOutlet private weak var detailLabelButtonConstraint: NSLayoutConstraint?
     
     private weak var leftConstraint: NSLayoutConstraint?
     private weak var rightConstraint: NSLayoutConstraint?
@@ -170,10 +169,16 @@ public class WIBannerController : UIViewController {
             bannerButton.setTitle(nil, forState: .Normal)
             bannerButton.setImage(nil, forState: .Normal)
             bannerButton.enabled = false
+            if let state = state where state == .Detail {
+                self.setState(.Banner, animated: true)
+            }
             
         case .BannerWithButton:
             buttonConfig!.button(bannerButton)
             bannerButton.enabled = true
+            if let state = state where state == .Detail {
+                self.setState(.Banner, animated: true)
+            }
             
         case .BannerWithDetail:
             bannerButton.setTitle(nil, forState: .Normal)
