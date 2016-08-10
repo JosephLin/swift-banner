@@ -38,6 +38,8 @@ public class WIBannerController : UIViewController {
     @IBOutlet private weak var detailLabel: UILabel?
     @IBOutlet private weak var detailButton: UIButton?
     
+    @IBOutlet weak var detailLabelButtonConstraint: NSLayoutConstraint?
+    
     private weak var leftConstraint: NSLayoutConstraint?
     private weak var rightConstraint: NSLayoutConstraint?
     private weak var bottomConstraint: NSLayoutConstraint?
@@ -146,7 +148,7 @@ public class WIBannerController : UIViewController {
     }
 
     private func updateUI() {
-        guard let bannerImageView = bannerImageView, bannerLabel = bannerLabel, bannerButton = bannerButton, detailLabel = detailLabel, detailButton = detailButton else {
+        guard let bannerImageView = bannerImageView, bannerLabel = bannerLabel, bannerButton = bannerButton, detailLabel = detailLabel, detailButton = detailButton, detailLabelButtonConstraint = detailLabelButtonConstraint else {
             // View hasn't been loaded yet.
             return
         }
@@ -179,12 +181,14 @@ public class WIBannerController : UIViewController {
             detailButton.setTitle(nil, forState: .Normal)
             detailButton.setImage(nil, forState: .Normal)
             detailButton.enabled = false
+            detailLabelButtonConstraint.active = false
             
         case .BannerWithDetailAndButton:
             bannerButton.setTitle(nil, forState: .Normal)
             bannerButton.enabled = true
             buttonConfig!.button(detailButton)
             detailButton.enabled = true
+            detailLabelButtonConstraint.active = true
         }
         
         self.updateBannerButton()

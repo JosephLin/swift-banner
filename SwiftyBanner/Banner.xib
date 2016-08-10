@@ -13,6 +13,7 @@
                 <outlet property="bannerView" destination="p10-qg-uGa" id="QLe-IX-lo4"/>
                 <outlet property="detailButton" destination="xgu-nV-bBS" id="q7c-mP-YAu"/>
                 <outlet property="detailLabel" destination="bl5-pa-3OU" id="gDN-RO-wE3"/>
+                <outlet property="detailLabelButtonConstraint" destination="18p-k6-bAc" id="h1F-cC-FTh"/>
                 <outlet property="detailView" destination="1tC-S7-W4T" id="ltV-mr-4C1"/>
                 <outlet property="view" destination="iN0-l3-epB" id="EOv-uY-XdM"/>
             </connections>
@@ -95,6 +96,7 @@
                         <constraint firstAttribute="trailing" secondItem="bl5-pa-3OU" secondAttribute="trailing" constant="16" id="7R4-cb-RKg"/>
                         <constraint firstItem="xgu-nV-bBS" firstAttribute="leading" secondItem="1tC-S7-W4T" secondAttribute="leading" constant="10" id="EN4-0c-Zvt"/>
                         <constraint firstAttribute="height" constant="130" id="EuI-V9-2hT"/>
+                        <constraint firstAttribute="bottom" secondItem="bl5-pa-3OU" secondAttribute="bottom" priority="750" constant="10" id="IQU-OK-xLu"/>
                         <constraint firstItem="bl5-pa-3OU" firstAttribute="top" secondItem="1tC-S7-W4T" secondAttribute="top" constant="10" id="UOx-om-JFU"/>
                         <constraint firstAttribute="bottom" secondItem="xgu-nV-bBS" secondAttribute="bottom" constant="10" id="Uzj-hm-NWD"/>
                         <constraint firstAttribute="trailing" secondItem="xgu-nV-bBS" secondAttribute="trailing" constant="10" id="tEg-c0-eZx"/>
