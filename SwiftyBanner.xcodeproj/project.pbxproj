@@ -61,9 +61,9 @@
 				7C35F6761D5927370051E5C9 /* AppDelegate.swift */,
 				7C35F6781D5927370051E5C9 /* ViewController.swift */,
 				7C35F6881D5927430051E5C9 /* Banner.swift */,
-				7C35F6891D5927430051E5C9 /* Banner.xib */,
-				7C35F67A1D5927370051E5C9 /* Main.storyboard */,
 				7C35F67F1D5927370051E5C9 /* LaunchScreen.storyboard */,
+				7C35F67A1D5927370051E5C9 /* Main.storyboard */,
+				7C35F6891D5927430051E5C9 /* Banner.xib */,
 				7C35F67D1D5927370051E5C9 /* Assets.xcassets */,
 				7C35F6821D5927370051E5C9 /* Info.plist */,
 			);

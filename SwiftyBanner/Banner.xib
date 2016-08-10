@@ -32,14 +32,6 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p10-qg-uGa" userLabel="Banner View">
                     <rect key="frame" x="0.0" y="1" width="320" height="48"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="252" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oN1-3n-yUn">
-                            <rect key="frame" x="0.0" y="0.0" width="320" height="48"/>
-                            <inset key="imageEdgeInsets" minX="10" minY="0.0" maxX="10" maxY="0.0"/>
-                            <state key="normal" image="ic_chevron_down"/>
-                            <connections>
-                                <action selector="bannerButtonTapped:" destination="-1" eventType="touchUpInside" id="cCj-lx-ihn"/>
-                            </connections>
-                        </button>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="252" verticalHuggingPriority="251" image="ic_warning" translatesAutoresizingMaskIntoConstraints="NO" id="s2q-AD-NWs">
                             <rect key="frame" x="10" y="8" width="32" height="32"/>
                             <constraints>
@@ -57,28 +49,39 @@
                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
+                        <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="252" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oN1-3n-yUn">
+                            <rect key="frame" x="278" y="10" width="32" height="28"/>
+                            <state key="normal" image="ic_chevron_up"/>
+                            <connections>
+                                <action selector="bannerButtonTapped:" destination="-1" eventType="touchUpInside" id="cCj-lx-ihn"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <gestureRecognizers/>
                     <constraints>
                         <constraint firstAttribute="height" constant="48" id="4gx-2c-QRt"/>
                         <constraint firstItem="s2q-AD-NWs" firstAttribute="leading" secondItem="p10-qg-uGa" secondAttribute="leading" constant="10" id="C3c-sB-fpz"/>
+                        <constraint firstAttribute="trailing" secondItem="zfF-2Z-9DZ" secondAttribute="trailing" priority="750" constant="10" id="CKx-eB-IX1"/>
                         <constraint firstAttribute="bottom" secondItem="s2q-AD-NWs" secondAttribute="bottom" constant="8" id="GVW-up-VWM"/>
                         <constraint firstItem="s2q-AD-NWs" firstAttribute="top" secondItem="p10-qg-uGa" secondAttribute="top" constant="8" id="Lub-Nq-iBL"/>
-                        <constraint firstItem="oN1-3n-yUn" firstAttribute="leading" secondItem="zfF-2Z-9DZ" secondAttribute="trailing" constant="8" id="Xj5-2e-5ab"/>
                         <constraint firstItem="zfF-2Z-9DZ" firstAttribute="leading" secondItem="s2q-AD-NWs" secondAttribute="trailing" constant="8" id="cL4-tb-d9R"/>
                         <constraint firstItem="zfF-2Z-9DZ" firstAttribute="leading" secondItem="p10-qg-uGa" secondAttribute="leading" priority="750" constant="10" id="dYw-Pl-h4c"/>
-                        <constraint firstItem="oN1-3n-yUn" firstAttribute="top" secondItem="p10-qg-uGa" secondAttribute="top" id="dZK-JI-6eS"/>
-                        <constraint firstAttribute="trailing" secondItem="zfF-2Z-9DZ" secondAttribute="trailing" constant="50" id="dje-iX-Wma"/>
+                        <constraint firstItem="oN1-3n-yUn" firstAttribute="top" secondItem="p10-qg-uGa" secondAttribute="top" constant="10" id="dZK-JI-6eS"/>
                         <constraint firstItem="zfF-2Z-9DZ" firstAttribute="centerY" secondItem="p10-qg-uGa" secondAttribute="centerY" id="eA7-p1-KnF"/>
-                        <constraint firstAttribute="bottom" secondItem="oN1-3n-yUn" secondAttribute="bottom" id="hF8-dJ-V3D"/>
-                        <constraint firstItem="oN1-3n-yUn" firstAttribute="leading" secondItem="p10-qg-uGa" secondAttribute="leading" id="jVX-lU-wUe"/>
-                        <constraint firstAttribute="trailing" secondItem="oN1-3n-yUn" secondAttribute="trailing" id="vJC-rj-iWk"/>
+                        <constraint firstAttribute="bottom" secondItem="oN1-3n-yUn" secondAttribute="bottom" constant="10" id="hF8-dJ-V3D"/>
+                        <constraint firstItem="oN1-3n-yUn" firstAttribute="leading" secondItem="zfF-2Z-9DZ" secondAttribute="trailing" constant="8" id="hjC-5c-NeZ"/>
+                        <constraint firstItem="oN1-3n-yUn" firstAttribute="leading" secondItem="p10-qg-uGa" secondAttribute="leading" constant="10" id="jVX-lU-wUe"/>
+                        <constraint firstAttribute="trailing" secondItem="oN1-3n-yUn" secondAttribute="trailing" constant="10" id="vJC-rj-iWk"/>
                     </constraints>
                     <variation key="default">
                         <mask key="constraints">
-                            <exclude reference="Xj5-2e-5ab"/>
+                            <exclude reference="jVX-lU-wUe"/>
                         </mask>
                     </variation>
+                    <connections>
+                        <outletCollection property="gestureRecognizers" destination="Qak-p4-ZU7" appends="YES" id="K6a-nV-ck5"/>
+                    </connections>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1tC-S7-W4T" userLabel="Detail View">
                     <rect key="frame" x="0.0" y="49" width="320" height="130"/>
@@ -139,9 +142,14 @@
             </variation>
             <point key="canvasLocation" x="971" y="375.5"/>
         </view>
+        <tapGestureRecognizer id="Qak-p4-ZU7">
+            <connections>
+                <action selector="bannerTapped:" destination="-1" id="4IO-cs-BTp"/>
+            </connections>
+        </tapGestureRecognizer>
     </objects>
     <resources>
-        <image name="ic_chevron_down" width="32" height="32"/>
+        <image name="ic_chevron_up" width="32" height="32"/>
         <image name="ic_warning" width="32" height="32"/>
     </resources>
 </document>

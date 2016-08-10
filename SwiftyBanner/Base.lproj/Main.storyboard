@@ -18,23 +18,39 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="9jx-ub-3wy">
-                                <rect key="frame" x="20" y="256" width="560" height="88"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="9jx-ub-3wy">
+                                <rect key="frame" x="20" y="256" width="560" height="196"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="42R-2f-zlj">
                                         <rect key="frame" x="0.0" y="0.0" width="560" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                        <state key="normal" title="Animated"/>
+                                        <state key="normal" title="Banner Only"/>
                                         <connections>
-                                            <action selector="firstButtonTapped:" destination="2vC-NK-Ens" eventType="touchUpInside" id="LN8-m2-4sD"/>
+                                            <action selector="bannerOnly:" destination="2vC-NK-Ens" eventType="touchUpInside" id="2RY-lN-gM7"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aPg-jw-qwI">
                                         <rect key="frame" x="0.0" y="54" width="560" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                        <state key="normal" title="Not Animated"/>
+                                        <state key="normal" title="Banner With Button"/>
                                         <connections>
-                                            <action selector="secondButtonTapped:" destination="2vC-NK-Ens" eventType="touchUpInside" id="xu3-6d-fum"/>
+                                            <action selector="bannerWithButton:" destination="2vC-NK-Ens" eventType="touchUpInside" id="fme-zC-3AR"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xUs-vo-Uu6">
+                                        <rect key="frame" x="0.0" y="108" width="560" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <state key="normal" title="Banner With Detail"/>
+                                        <connections>
+                                            <action selector="bannerWithDetail:" destination="2vC-NK-Ens" eventType="touchUpInside" id="eaf-tA-Veb"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lLg-q3-wbs">
+                                        <rect key="frame" x="0.0" y="162" width="560" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <state key="normal" title="Banner With Detail And Button"/>
+                                        <connections>
+                                            <action selector="bannerWithDetailAndButton:" destination="2vC-NK-Ens" eventType="touchUpInside" id="xEu-NZ-q5p"/>
                                         </connections>
                                     </button>
                                 </subviews>
