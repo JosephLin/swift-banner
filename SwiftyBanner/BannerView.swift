@@ -13,30 +13,42 @@ typealias ButtonAction = () -> Void
 
 @IBDesignable class BannerView: UIView {
 
-    weak var imageView: UIImageView?
-    weak var label: UILabel?
-    weak var button: UIButton?
-    
-    weak var labelConstraintLeft: NSLayoutConstraint?
-    weak var labelConstraintRight: NSLayoutConstraint?
+    enum State {
+        case Hidden
+        case Banner
+    }
+
+    lazy var imageView: UIImageView = {
+        return UIImageView()
+    }()
+    lazy var label: UILabel = {
+        return UILabel()
+    }()
+    lazy var button: UIButton = {
+        return UIButton(type: .System)
+    }()
     
     @IBInspectable var image: UIImage? {
         didSet {
-            self.updateUI()
+            self.setNeedsLayout()
         }
     }
     @IBInspectable var text: String? {
         didSet {
-            self.updateUI()
+            self.setNeedsLayout()
         }
     }
     @IBInspectable var buttonTitle: String? {
         didSet {
-            self.updateUI()
+            self.setNeedsLayout()
         }
     }
     var buttonAction: ButtonAction?
     
+    private weak var leftConstraint: NSLayoutConstraint?
+    private weak var rightConstraint: NSLayoutConstraint?
+    private weak var bottomConstraint: NSLayoutConstraint?
+
     convenience init(image: UIImage?, text: String?, buttonTitle: String?, buttonAction: ButtonAction?) {
         self.init()
         self.configure(image: image, text: text, buttonTitle: buttonTitle, buttonAction: buttonAction)
@@ -47,88 +59,139 @@ typealias ButtonAction = () -> Void
         self.text = text
         self.buttonTitle = buttonTitle
         self.buttonAction = buttonAction
-        self.updateUI()
+        self.setNeedsLayout()
     }
     
-    func updateUI() {
+    override func layoutSubviews() {
+        super.layoutSubviews()
 
         if let image = image {
-            let imageView = self.imageView ?? {
-                let imageView = UIImageView()
-                self.imageView = imageView
-
-                imageView.translatesAutoresizingMaskIntoConstraints = false
-                imageView.setContentHuggingPriority(UILayoutPriorityDefaultHigh, forAxis: .Horizontal)
-                self.addSubview(imageView)
-                self.addConstraints([
-                    NSLayoutConstraint(item: imageView, attribute: .Leading, relatedBy: .Equal, toItem: self, attribute: .Leading, multiplier: 1.0, constant: 8.0),
-                    NSLayoutConstraint(item: imageView, attribute: .CenterY, relatedBy: .Equal, toItem: self, attribute: .CenterY, multiplier: 1.0, constant: 0.0),
-                    ])
-                
-                return imageView
-                }()
-
+            self.addSubview(imageView)
             imageView.image = image
+            imageView.sizeToFit()
+            imageView.frame.origin.x = 8.0
+            imageView.center.y = CGRectGetMidY(self.bounds)
         }
         else {
-            self.imageView?.removeFromSuperview()
+            imageView.removeFromSuperview()
         }
         
         if let buttonTitle = buttonTitle {
-            let button = self.button ?? {
-                let button = UIButton()
-                self.button = button
-
-                button.translatesAutoresizingMaskIntoConstraints = false
-                button.setContentHuggingPriority(UILayoutPriorityDefaultHigh, forAxis: .Horizontal)
-                self.addSubview(button)
-                self.addConstraints([
-                    NSLayoutConstraint(item: self, attribute: .Trailing, relatedBy: .Equal, toItem: button, attribute: .Trailing, multiplier: 1.0, constant: 8.0),
-                    NSLayoutConstraint(item: self, attribute: .CenterY, relatedBy: .Equal, toItem: button, attribute: .CenterY, multiplier: 1.0, constant: 0.0),
-                    ])
-
-                return button
-                }()
-            
+            self.addSubview(button)
             button.setTitle(buttonTitle, forState: .Normal)
+            button.sizeToFit()
+            button.frame.origin.x = CGRectGetWidth(self.frame) - 8.0 - CGRectGetWidth(button.frame)
+            button.center.y = CGRectGetMidY(self.bounds)
         }
         else {
-            self.button?.removeFromSuperview()
+            button.removeFromSuperview()
         }
-        
+
         if let text = text {
-            let label = self.label ?? {
-                let label = UILabel()
-                self.label = label
-
-                label.translatesAutoresizingMaskIntoConstraints = false
-                label.setContentCompressionResistancePriority(UILayoutPriorityDefaultLow, forAxis: .Horizontal)
-                self.addSubview(label)
-                self.addConstraint(NSLayoutConstraint(item: self, attribute: .CenterY, relatedBy: .Equal, toItem: label, attribute: .CenterY, multiplier: 1.0, constant: 0.0))
-
-                return label
-                }()
-            
-            if let labelConstraintLeft = labelConstraintLeft {
-                self.removeConstraint(labelConstraintLeft)
-            }
-            let leftItem = imageView ?? self
-            let leftConstraint = NSLayoutConstraint(item: label, attribute: .Leading, relatedBy: .Equal, toItem: leftItem, attribute: .Trailing, multiplier: 1.0, constant: 8.0)
-            labelConstraintLeft = leftConstraint
-            self.addConstraint(leftConstraint)
-
-            if let labelConstraintRight = labelConstraintRight {
-                self.removeConstraint(labelConstraintRight)
-            }
-            let rightItem = button ?? self
-            let rightConstraint = NSLayoutConstraint(item: rightItem, attribute: .Leading, relatedBy: .Equal, toItem: label, attribute: .Trailing, multiplier: 1.0, constant: 8.0)
-            labelConstraintRight = rightConstraint
-            self.addConstraint(rightConstraint)
-
+            self.addSubview(label)
             label.text = text
+            label.textColor = self.tintColor
+            label.sizeToFit()
+            let left = (image == nil) ? 0.0 : CGRectGetMaxX(imageView.frame)
+            let right = (buttonTitle == nil) ? CGRectGetWidth(self.frame) : CGRectGetMinX(button.frame)
+            label.frame.origin.x = left
+            label.frame.size.width = right - left - 8.0
+            label.center.y = CGRectGetMidY(self.bounds)
         }
         else {
-            self.label?.removeFromSuperview()
+            label.removeFromSuperview()
         }
     }
 }
+
+//extension BannerView {
+//    public func setState(state: State, animated: Bool, completion: (() -> Void)? = nil) {
+//        guard let superview = self.view.superview, bottomConstraint = self.bottomConstraint else {
+//            return
+//        }
+//        
+//        superview.layoutIfNeeded()  // Ensures that all pending layout operations have been completed
+//        
+//        let (height, icon) = { s -> (CGFloat, UIImage) in
+//            switch s {
+//            case .Hidden:
+//                return (-self.totalHeight, UIImage(named: "ic_chevron_up")!)
+//            case .Banner:
+//                return (-self.detailHeight, UIImage(named: "ic_chevron_up")!)
+//            case .Detail:
+//                return (0, UIImage(named: "ic_chevron_down")!)
+//            }
+//        }(state)
+//        
+//        bottomConstraint.constant = height
+//        
+//        if animated == true {
+//            UIView.animateWithDuration(
+//                0.2,
+//                animations: {
+//                    superview.layoutIfNeeded()
+//                },
+//                completion: { (finished) in
+//                    self.updateUI()
+//                    //                    self.bannerButton?.setImage(icon, forState: .Normal)
+//                }
+//            )
+//        }
+//        else {
+//            self.updateUI()
+//            //            self.bannerButton?.setImage(icon, forState: .Normal)
+//        }
+//        
+//        self.state = state
+//    }
+//}
+//
+//extension BannerView {
+//    func setupConstraintsAndAddToContainer(containerView: UIView) {
+//        
+//        containerView.addSubview(self)
+//        
+//        let left = NSLayoutConstraint(item: containerView, attribute: .Left, relatedBy: .Equal, toItem: self, attribute: .Left, multiplier: 1.0, constant: 0.0)
+//        let right = NSLayoutConstraint(item: containerView, attribute: .Right, relatedBy: .Equal, toItem: self, attribute: .Right, multiplier: 1.0, constant: 0.0)
+//        let bottom = NSLayoutConstraint(item: containerView, attribute: .Bottom, relatedBy: .Equal, toItem: self, attribute: .Bottom, multiplier: 1.0, constant: 0.0)
+//        containerView.addConstraints([left, right, bottom])
+//        
+//        // Keep references to the constraints
+//        self.leftConstraint = left
+//        self.rightConstraint = right
+//        self.bottomConstraint = bottom
+//    }
+//}
+//
+//extension UIViewController {
+//    func presentBanner(banner: BannerView, animated: Bool, completion: (() -> Void)?) {
+//        banner.translatesAutoresizingMaskIntoConstraints = false
+//        banner.setupConstraintsAndAddToContainer(self.view)
+//        
+//        banner.setState(.Hidden, animated: false)
+//        banner.setState(.Banner, animated: animated, completion: completion)
+//    }
+//    
+//    func dismissBanner(banner: WIBannerController? = nil, animated: Bool, completion: (() -> Void)?) {
+//        guard let bannerOrSelf = banner ?? self as? WIBannerController else {
+//            return
+//        }
+//        
+//        if animated == true {
+//            bannerOrSelf.setState(.Hidden, animated: true, completion: {
+//                bannerOrSelf.willMoveToParentViewController(nil)
+//                bannerOrSelf.view.removeFromSuperview()
+//                bannerOrSelf.removeFromParentViewController()
+//                if let completion = completion {
+//                    completion()
+//                }
+//            })
+//        }
+//        else {
+//            bannerOrSelf.setState(.Hidden, animated: false, completion: completion)
+//            bannerOrSelf.willMoveToParentViewController(nil)
+//            bannerOrSelf.view.removeFromSuperview()
+//            bannerOrSelf.removeFromParentViewController()
+//        }
+//    }
+//}

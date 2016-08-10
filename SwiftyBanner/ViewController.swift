@@ -44,6 +44,7 @@ class ViewController: UIViewController {
                 button: { (button) in
                     button.setImage(nil, forState: .Normal)
                     button.setTitle("Done", forState: .Normal)
+                    button.setTitleColor(UIColor.redColor(), forState: .Normal)
                 },
                 action: { banner in
                     banner.dismissBanner(animated: true, completion: nil)

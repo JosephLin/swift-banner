@@ -175,12 +175,6 @@ public class WIBannerController : UIViewController {
             
         case .BannerWithDetail:
             bannerButton.setTitle(nil, forState: .Normal)
-            if let state = state where state == .Detail {
-                bannerButton.setImage(UIImage(named: "ic_chevron_down"), forState: .Normal)
-            }
-            else {
-                bannerButton.setImage(UIImage(named: "ic_chevron_up"), forState: .Normal)
-            }
             bannerButton.enabled = true
             detailButton.setTitle(nil, forState: .Normal)
             detailButton.setImage(nil, forState: .Normal)
@@ -188,15 +182,30 @@ public class WIBannerController : UIViewController {
             
         case .BannerWithDetailAndButton:
             bannerButton.setTitle(nil, forState: .Normal)
+            bannerButton.enabled = true
+            buttonConfig!.button(detailButton)
+            detailButton.enabled = true
+        }
+        
+        self.updateBannerButton()
+    }
+    
+    func updateBannerButton() {
+        guard let bannerButton = bannerButton else {
+            // View hasn't been loaded yet.
+            return
+        }
+
+        switch self.style {
+        case .BannerWithDetail, .BannerWithDetailAndButton:
             if let state = state where state == .Detail {
                 bannerButton.setImage(UIImage(named: "ic_chevron_down"), forState: .Normal)
             }
             else {
                 bannerButton.setImage(UIImage(named: "ic_chevron_up"), forState: .Normal)
             }
-            bannerButton.enabled = true
-            buttonConfig!.button(detailButton)
-            detailButton.enabled = true
+        default:
+            break
         }
     }
     
@@ -228,18 +237,16 @@ public class WIBannerController : UIViewController {
         
         superview.layoutIfNeeded()  // Ensures that all pending layout operations have been completed
         
-        let (height, icon) = { s -> (CGFloat, UIImage) in
-            switch s {
+        bottomConstraint.constant = {
+            switch state {
             case .Hidden:
-                return (-self.totalHeight, UIImage(named: "ic_chevron_up")!)
+                return -self.totalHeight
             case .Banner:
-                return (-self.detailHeight, UIImage(named: "ic_chevron_up")!)
+                return -self.detailHeight
             case .Detail:
-                return (0, UIImage(named: "ic_chevron_down")!)
+                return 0
             }
-        }(state)
-
-        bottomConstraint.constant = height
+        }()
         
         if animated == true {
             UIView.animateWithDuration(
@@ -248,14 +255,12 @@ public class WIBannerController : UIViewController {
                     superview.layoutIfNeeded()
                 },
                 completion: { (finished) in
-                    self.updateUI()
-//                    self.bannerButton?.setImage(icon, forState: .Normal)
+                    self.updateBannerButton()
                 }
             )
         }
         else {
-            self.updateUI()
-//            self.bannerButton?.setImage(icon, forState: .Normal)
+            self.updateBannerButton()
         }
         
         self.state = state

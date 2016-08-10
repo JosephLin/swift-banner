@@ -57,13 +57,14 @@
                             </stackView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5TH-IC-sk2" customClass="BannerView" customModule="SwiftyBanner" customModuleProvider="target">
                                 <rect key="frame" x="20" y="20" width="560" height="44"/>
-                                <color key="backgroundColor" red="1" green="0.119257565" blue="0.071263045789999993" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="tintColor" red="1" green="0.119257565" blue="0.071263045789999993" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="abC-zI-hal"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="string" keyPath="buttonTitle" value="button"/>
-                                    <userDefinedRuntimeAttribute type="image" keyPath="image" value="ic_chevron_down"/>
+                                    <userDefinedRuntimeAttribute type="image" keyPath="image" value="ic_warning"/>
                                     <userDefinedRuntimeAttribute type="string" keyPath="text" value="817390172893179837182937198237129837198739817398173891"/>
                                 </userDefinedRuntimeAttributes>
                             </view>
@@ -93,6 +94,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="ic_chevron_down" width="32" height="32"/>
+        <image name="ic_warning" width="32" height="32"/>
     </resources>
 </document>

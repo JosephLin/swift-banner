@@ -41,8 +41,8 @@
                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="252" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oN1-3n-yUn">
-                            <rect key="frame" x="278" y="10" width="32" height="28"/>
+                        <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="252" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oN1-3n-yUn">
+                            <rect key="frame" x="278" y="8" width="32" height="32"/>
                             <state key="normal" image="ic_chevron_up"/>
                             <connections>
                                 <action selector="bannerButtonTapped:" destination="-1" eventType="touchUpInside" id="cCj-lx-ihn"/>
@@ -57,24 +57,12 @@
                         <constraint firstItem="s2q-AD-NWs" firstAttribute="leading" secondItem="p10-qg-uGa" secondAttribute="leading" constant="10" id="C3c-sB-fpz"/>
                         <constraint firstAttribute="trailing" secondItem="zfF-2Z-9DZ" secondAttribute="trailing" priority="750" constant="10" id="CKx-eB-IX1"/>
                         <constraint firstItem="s2q-AD-NWs" firstAttribute="centerY" secondItem="p10-qg-uGa" secondAttribute="centerY" id="Fpm-FE-EIL"/>
-                        <constraint firstAttribute="bottom" secondItem="s2q-AD-NWs" secondAttribute="bottom" constant="8" id="GVW-up-VWM"/>
-                        <constraint firstItem="s2q-AD-NWs" firstAttribute="top" secondItem="p10-qg-uGa" secondAttribute="top" constant="8" id="Lub-Nq-iBL"/>
                         <constraint firstItem="zfF-2Z-9DZ" firstAttribute="leading" secondItem="s2q-AD-NWs" secondAttribute="trailing" constant="8" id="cL4-tb-d9R"/>
                         <constraint firstItem="zfF-2Z-9DZ" firstAttribute="leading" secondItem="p10-qg-uGa" secondAttribute="leading" priority="750" constant="10" id="dYw-Pl-h4c"/>
-                        <constraint firstItem="oN1-3n-yUn" firstAttribute="top" secondItem="p10-qg-uGa" secondAttribute="top" constant="10" id="dZK-JI-6eS"/>
                         <constraint firstItem="zfF-2Z-9DZ" firstAttribute="centerY" secondItem="p10-qg-uGa" secondAttribute="centerY" id="eA7-p1-KnF"/>
-                        <constraint firstAttribute="bottom" secondItem="oN1-3n-yUn" secondAttribute="bottom" constant="10" id="hF8-dJ-V3D"/>
                         <constraint firstItem="oN1-3n-yUn" firstAttribute="leading" secondItem="zfF-2Z-9DZ" secondAttribute="trailing" constant="8" id="hjC-5c-NeZ"/>
-                        <constraint firstItem="oN1-3n-yUn" firstAttribute="leading" secondItem="p10-qg-uGa" secondAttribute="leading" constant="10" id="jVX-lU-wUe"/>
                         <constraint firstAttribute="trailing" secondItem="oN1-3n-yUn" secondAttribute="trailing" constant="10" id="vJC-rj-iWk"/>
                     </constraints>
-                    <variation key="default">
-                        <mask key="constraints">
-                            <exclude reference="GVW-up-VWM"/>
-                            <exclude reference="Lub-Nq-iBL"/>
-                            <exclude reference="jVX-lU-wUe"/>
-                        </mask>
-                    </variation>
                     <connections>
                         <outletCollection property="gestureRecognizers" destination="Qak-p4-ZU7" appends="YES" id="K6a-nV-ck5"/>
                     </connections>
@@ -116,7 +104,6 @@
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="1tC-S7-W4T" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="4no-Kt-wcO"/>
-                <constraint firstAttribute="bottom" secondItem="p10-qg-uGa" secondAttribute="bottom" constant="100" id="6t4-48-mMg"/>
                 <constraint firstItem="mhe-Wh-ghg" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="8hM-sd-FKv"/>
                 <constraint firstAttribute="trailing" secondItem="p10-qg-uGa" secondAttribute="trailing" id="AGG-ph-5de"/>
                 <constraint firstItem="p10-qg-uGa" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="CfH-Q2-tPY"/>
@@ -131,11 +118,6 @@
             <nil key="simulatedTopBarMetrics"/>
             <nil key="simulatedBottomBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <variation key="default">
-                <mask key="constraints">
-                    <exclude reference="6t4-48-mMg"/>
-                </mask>
-            </variation>
             <point key="canvasLocation" x="971" y="375.5"/>
         </view>
         <tapGestureRecognizer id="Qak-p4-ZU7">
