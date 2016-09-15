@@ -1,2 +1,2 @@
 # swift-banner
-A swifty banner
+A swifty banner 🐇
